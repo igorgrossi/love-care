@@ -9,6 +9,7 @@ export class HomePage {
   carregamentoInicial: boolean;
   openInstituicao: boolean;
   controllerAll: boolean;
+  cadastroInstituicao: boolean;
 
   constructor() {
     setTimeout(() => {
@@ -21,9 +22,15 @@ export class HomePage {
     this.controllerAll = true;
   }
 
-  voltarPaginaInicial(){
+  voltarPaginaInicial() {
     this.openInstituicao = false;
     this.carregamentoInicial = true;
     this.controllerAll = false;
+    this.cadastroInstituicao = false;
+  }
+
+  abrirCadastroInstituicao() {
+    this.openInstituicao = false;
+    this.cadastroInstituicao = true;
   }
 }

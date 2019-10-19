@@ -41,13 +41,79 @@
         <p>Entrar</p>
       </ion-button>
 
-      <ion-button style="margin-top:0.5em" class="button" color="light">
+      <ion-button
+        (click)="abrirCadastroInstituicao()"
+        style="margin-top:0.5em"
+        class="button"
+        color="light"
+      >
         <i class="fas fa-door-open"></i>
         <p>Cadastrar instituição</p>
       </ion-button>
 
-      <ion-button (click)="voltarPaginaInicial()" style="margin-top:2em" class="" color="light">
+      <ion-button
+        (click)="voltarPaginaInicial()"
+        style="margin-top:2em"
+        class=""
+        color="light"
+      >
         <p><i class="fas fa-arrow-left"></i> Voltar</p>
+      </ion-button>
+    </div>
+
+    <div
+      *ngIf="cadastroInstituicao"
+      style="margin-top: -7em;"
+      class="cadastro-intituicao"
+    >
+      <ion-item color="transparent" class="">
+        <ion-label position="floating">E-mail</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent" class="">
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+
+      <ion-item style="margin-top:10px;" color="transparent">
+        <ion-label>Tipo instituição</ion-label>
+        <ion-select multiple="true" cancelText="Nah" okText="Okay!">
+          <ion-select-option value="Idosos">
+            <i class="fas fa-user-alt"></i>Idosos</ion-select-option
+          >
+          <ion-select-option value="Orfanato"
+            ><i class="fas fa-baby"></i> Crianças (Orfanato)</ion-select-option
+          >
+          <ion-select-option value="Pet's"
+            ><i class="fas fa-dog"></i> Pet's</ion-select-option
+          >
+          <ion-select-option value="Refugiados"
+            ><i class="fas fa-suitcase-rolling"></i>
+            Refugiados</ion-select-option
+          >
+          <ion-select-option value="Hospital"
+            ><i class="fas fa-plus-square"></i> Hospital</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+
+      <ion-item color="transparent" class="">
+        <ion-label position="floating">Endereço</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent" class="">
+        <ion-label position="floating">Telefone</ion-label>
+        <ion-input type="cel"></ion-input>
+      </ion-item>
+
+      <ion-button style="margin-top:2em" class="button" color="light">
+        <p>Cadastrar</p>
+      </ion-button>
+
+      <ion-button (click)="voltarPaginaInicial()" style="margin-top:1em" class="button" color="light">
+        <p>Voltar</p>
       </ion-button>
     </div>
   </div>
