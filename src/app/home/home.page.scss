@@ -1,1 +1,23 @@
 
+ion-content{
+    --background: #fff url('../../assets/cover.jpg') no-repeat center center / cover;
+}
+
+.loading{
+    text-align: center;
+}
+
+.button {
+    width: 100%;
+}
+
+
+ion-item{
+    border-color: transparent !important;
+    background-color: transparent !important;
+    color: white !important; 
+}
+
+.auth{
+    margin-top: -7em;
+}
