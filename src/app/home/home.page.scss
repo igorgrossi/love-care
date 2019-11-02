@@ -12,7 +12,7 @@ ion-content{
 }
 
 
-ion-item{
+ion-item, ion-list{
     border-color: transparent !important;
     background-color: transparent !important;
     color: white !important; 
@@ -20,4 +20,18 @@ ion-item{
 
 .auth{
     margin-top: -7em;
+}
+
+.bg-transparent{
+    border-color: transparent !important;
+    background-color: transparent !important;
+    --ion-background-color: transparent !important;
+    margin-top: 1em;
+}
+
+.bg-transparent p{
+    font-size: 14px;
+}
+.bg-transparent p{
+    font-size: 14px;
 }

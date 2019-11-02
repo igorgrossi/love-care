@@ -18,13 +18,55 @@
     <div *ngIf="carregamentoInicial && !controllerAll" class="content">
       <ion-button (click)="abrirInstituicao()" class="button" color="light">
         <i class="fas fa fa-home"></i>
-        <p>Instituição</p></ion-button
-      >
+        <p>Instituição</p>
+      </ion-button>
 
-      <ion-button class="button" color="light">
+      <ion-button (click)="abrirDoacao()" class="button" color="light">
         <i class="fas fa-heart"></i>
-        <p>Doador</p></ion-button
-      >
+        <p>Doador</p>
+      </ion-button>
+    </div>
+
+    <div *ngIf="abrirListaDoacao" class="listaDoacoes" class="auth">
+      <ion-item style="margin-top:10px; margin-bottom: 3px;" color="transparent">
+        <ion-label>Selecione o item que você quer doar</ion-label>
+        <ion-select multiple="false" (ionChange)="filterDoacoes($event.target.value)" cancelText="Nah" okText="Okay!">
+            <ion-select-option value="todos">
+                <i class="fas fa-user-alt"></i>Todos</ion-select-option>
+          <ion-select-option value="Alimento">
+            <i class="fas fa-user-alt"></i>Alimento</ion-select-option>
+          <ion-select-option value="Roupa"><i class="fas fa-baby"></i> Roupa</ion-select-option>
+          <ion-select-option value="higiene pessoal"><i class="fas fa-dog"></i> Higiene pessoal</ion-select-option>
+          <ion-select-option value="pets"><i class="fas fa-dog"></i> Animais</ion-select-option>
+          <ion-select-option value="Dinheiro"><i class="fas fa-suitcase-rolling"></i>
+            Dinheiro</ion-select-option>
+          <ion-select-option value="Outro"><i class="fas fa-plus-square"></i> Outros</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-list class="bg-transparent">
+        <ion-item *ngFor="let item of listaDoacoesFiltradas">
+          <div class="itens-doacao">
+            <label for="">{{item.nomeItem}}</label>
+            <p>
+              {{item.descricao}}
+            </p>
+          </div>
+        </ion-item>
+      </ion-list>
+
+      <!-- <ion-content>
+        <ion-list *ngFor="let item of listaDoacoes">
+          <ion-item>
+            {{item.nomeItem}}
+            <p>{{item.descricao}}</p>
+          </ion-item>
+        </ion-list>
+      </ion-content> -->
+
+      <ion-button (click)="voltarPaginaInicial()" style="margin-top:1em" class="button" color="light">
+        <p>Voltar</p>
+      </ion-button>
     </div>
 
     <div *ngIf="openInstituicao" class="auth">
@@ -41,31 +83,17 @@
         <p>Entrar</p>
       </ion-button>
 
-      <ion-button
-        (click)="abrirCadastroInstituicao()"
-        style="margin-top:0.5em"
-        class="button"
-        color="light"
-      >
+      <ion-button (click)="abrirCadastroInstituicao()" style="margin-top:0.5em" class="button" color="light">
         <i class="fas fa-door-open"></i>
         <p>Cadastrar instituição</p>
       </ion-button>
 
-      <ion-button
-        (click)="voltarPaginaInicial()"
-        style="margin-top:2em"
-        class=""
-        color="light"
-      >
+      <ion-button (click)="voltarPaginaInicial()" style="margin-top:2em" class="" color="light">
         <p><i class="fas fa-arrow-left"></i> Voltar</p>
       </ion-button>
     </div>
 
-    <div
-      *ngIf="cadastroInstituicao"
-      style="margin-top: -7em;"
-      class="cadastro-intituicao"
-    >
+    <div *ngIf="cadastroInstituicao" style="margin-top: -7em;" class="cadastro-intituicao">
       <ion-item color="transparent" class="">
         <ion-label position="floating">E-mail</ion-label>
         <ion-input type="text"></ion-input>
@@ -80,21 +108,12 @@
         <ion-label>Tipo instituição</ion-label>
         <ion-select multiple="true" cancelText="Nah" okText="Okay!">
           <ion-select-option value="Idosos">
-            <i class="fas fa-user-alt"></i>Idosos</ion-select-option
-          >
-          <ion-select-option value="Orfanato"
-            ><i class="fas fa-baby"></i> Crianças (Orfanato)</ion-select-option
-          >
-          <ion-select-option value="Pet's"
-            ><i class="fas fa-dog"></i> Pet's</ion-select-option
-          >
-          <ion-select-option value="Refugiados"
-            ><i class="fas fa-suitcase-rolling"></i>
-            Refugiados</ion-select-option
-          >
-          <ion-select-option value="Hospital"
-            ><i class="fas fa-plus-square"></i> Hospital</ion-select-option
-          >
+            <i class="fas fa-user-alt"></i>Idosos</ion-select-option>
+          <ion-select-option value="Orfanato"><i class="fas fa-baby"></i> Crianças (Orfanato)</ion-select-option>
+          <ion-select-option value="Pet's"><i class="fas fa-dog"></i> Pet's</ion-select-option>
+          <ion-select-option value="Refugiados"><i class="fas fa-suitcase-rolling"></i>
+            Refugiados</ion-select-option>
+          <ion-select-option value="Hospital"><i class="fas fa-plus-square"></i> Hospital</ion-select-option>
         </ion-select>
       </ion-item>
 
@@ -116,5 +135,7 @@
         <p>Voltar</p>
       </ion-button>
     </div>
+
+
   </div>
 </ion-content>
