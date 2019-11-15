@@ -63,7 +63,7 @@ export class HomePage {
       { nomeItem: 'Feijão', categoria: 'alimento', descricao: 'Precisamos de 30 kg de feijão' },
       { nomeItem: 'Dinheiro', categoria: 'dinheiro', descricao: 'Precisamos de 300 mil até o final do ano!' },
       { nomeItem: 'Ração', categoria: 'pets', descricao: 'Precisamos de 30 kg de ração' },
-      { nomeItem: 'Roupa.', categoria: 'Roupa', descricao: 'Precisamos de agasalho' },
+      { nomeItem: 'Roupa', categoria: 'Roupa', descricao: 'Precisamos de agasalho' },
       { nomeItem: 'Lata de tinta', categoria: 'outros', descricao: 'Precisamos de lata de tinta' },
     ];
   }
