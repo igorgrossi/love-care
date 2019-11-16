@@ -62,7 +62,7 @@ export class InstituicaoPage implements OnInit {
 
   logout() {
     this.user.logout();
-    location.reload();
+    this.router.navigate(['/home']);
   }
 
   async registrar() {
