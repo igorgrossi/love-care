@@ -31,8 +31,8 @@
       <ion-item style="margin-top:10px; margin-bottom: 3px;" color="transparent">
         <ion-label>Selecione o item que você quer doar</ion-label>
         <ion-select multiple="false" (ionChange)="filterDoacoes($event.target.value)" cancelText="Nah" okText="Okay!">
-            <ion-select-option value="todos">
-                <i class="fas fa-user-alt"></i>Todos</ion-select-option>
+          <ion-select-option value="todos">
+            <i class="fas fa-user-alt"></i>Todos</ion-select-option>
           <ion-select-option value="Alimento">
             <i class="fas fa-user-alt"></i>Alimento</ion-select-option>
           <ion-select-option value="Roupa"><i class="fas fa-baby"></i> Roupa</ion-select-option>
@@ -46,12 +46,24 @@
 
       <ion-list class="bg-transparent">
         <ion-item *ngFor="let item of listaDoacoesFiltradas">
-          <div class="itens-doacao">
-            <label for="">{{item.nomeItem}}</label>
+          <div style="margin-bottom: 2em;" class="itens-doacao">
+            <label for="">
+              Nome Instituição: {{item.nomeItem}}
+            </label>
             <p>
-              {{item.descricao}}
+              Categoria: {{item.categoria}}
+            </p>
+            <p>
+              Descrição: {{item.descricao}}
+            </p>
+            <p>
+              Endereço: {{item.endereco}}
+            </p>
+            <p>
+              Telefone: {{item.telefone}}
             </p>
           </div>
+
         </ion-item>
       </ion-list>
 
@@ -72,14 +84,16 @@
     <div *ngIf="openInstituicao" class="auth">
       <ion-item color="transparent" class="">
         <ion-label position="floating">Usuário</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [(ngModel)]='username'></ion-input>
       </ion-item>
       <ion-item color="transparent" class="">
         <ion-label position="floating">Senha</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input type="password" [(ngModel)]='password'></ion-input>
       </ion-item>
 
-      <ion-button style="margin-top:2em" class="button" color="light">
+      <ion-label *ngIf="erro" position="floating">{{erro}}</ion-label>
+
+      <ion-button style="margin-top:2em" class="button" (click)="submitLogin(username, password)" color="light">
         <p>Entrar</p>
       </ion-button>
 
@@ -96,12 +110,12 @@
     <div *ngIf="cadastroInstituicao" style="margin-top: -7em;" class="cadastro-intituicao">
       <ion-item color="transparent" class="">
         <ion-label position="floating">E-mail</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input [(ngModel)]="emailCadastro" type="text"></ion-input>
       </ion-item>
 
       <ion-item color="transparent" class="">
         <ion-label position="floating">Senha</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input [(ngModel)]="senhaCadastro" type="password"></ion-input>
       </ion-item>
 
       <ion-item style="margin-top:10px;" color="transparent">
@@ -127,7 +141,7 @@
         <ion-input type="cel"></ion-input>
       </ion-item>
 
-      <ion-button style="margin-top:2em" class="button" color="light">
+      <ion-button style="margin-top:2em" class="button" (click)="register()" color="light">
         <p>Cadastrar</p>
       </ion-button>
 

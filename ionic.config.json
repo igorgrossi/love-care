@@ -1,5 +1,7 @@
 {
   "name": "loveandcare",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

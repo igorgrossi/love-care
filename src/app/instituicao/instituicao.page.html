@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Instituição</ion-title>
+  </ion-toolbar>
+</ion-header>
+<button class="sair" (click)="logout()">Sair</button>
+<ion-content>
+  <ion-button (click)="abrirCadastroInstituicao()" style="margin-top:2em" class="button" color="light">
+    <i class="fas fa-plus"></i>
+    <p> PEDIR DOAÇÃO</p>
+  </ion-button>
+  <h2>Seus pedidos:</h2>
+  <div *ngIf="abrirCadastroInsituicao" style="margin-top: 0em;" class="cadastro-intituicao">
+    <ion-item color="transparent" class="">
+      <ion-label position="floating">Nome instituição</ion-label>
+      <ion-input [(ngModel)]="nomeItem" type="text"></ion-input>
+    </ion-item>
+    <ion-item style="margin-top:10px;" color="transparent">
+      <ion-label>Categoria doação</ion-label>
+      <ion-select [(ngModel)]="categoria" multiple="false" cancelText="Nah" okText="Okay!">
+        <ion-select-option value="alimentos">
+          <i class="fas fa-user-alt"></i>Alimentos</ion-select-option>
+        <ion-select-option value="dinheiro"><i class="fas fa-baby"></i> Dinheiro</ion-select-option>
+        <ion-select-option value="pets"><i class="fas fa-dog"></i> Pet's</ion-select-option>
+        <ion-select-option value="roupa"><i class="fas fa-suitcase-rolling"></i>
+          Roupa</ion-select-option>
+        <ion-select-option value="outros"><i class="fas fa-plus-square"></i> Outros</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item color="transparent" class="">
+      <ion-label position="floating">Descrição</ion-label>
+      <ion-input [(ngModel)]="descricao" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item color="transparent" class="">
+      <ion-label position="floating">Endereço</ion-label>
+      <ion-input [(ngModel)]="endereco" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item color="transparent" class="">
+      <ion-label position="floating">Telefone</ion-label>
+      <ion-input [(ngModel)]="telefone" type="text"></ion-input>
+    </ion-item>
+
+    <ion-button style="margin-top:2em" class="button" (click)="registrar()" color="light">
+      <p>Cadastrar</p>
+    </ion-button>
+
+  </div>
+
+  
+  <ion-content style="height: 300px;">
+    <ion-list style="margin-bottom: 2em;" padding *ngFor="let item of listaDoacoes">
+      <ion-item>
+        Nome: {{item.nomeItem}}
+      </ion-item>
+      <ion-item>
+        Categoria: {{item.categoria}}
+      </ion-item>
+      <ion-item>
+        Descrição: {{item.descricao}}
+      </ion-item>
+      <ion-item>
+        Telefone: {{item.telefone}}
+      </ion-item>
+      <ion-item>
+        Endereço: {{item.endereco}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+
+</ion-content>
