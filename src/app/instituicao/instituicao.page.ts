@@ -41,48 +41,64 @@ export class InstituicaoPage implements OnInit {
     this.db.list('/listaDoacao').snapshotChanges().subscribe(res => {
       res.forEach(async doc => {
         if (doc.payload.val()['email'] == await this.user.getUsername()) {
-        this.listaDoacoes.push(doc.payload.val());
-      }
+          const obj = new objListaDoacoes();
+          obj.key = doc.payload.key;
+          obj.value = doc.payload.val();
+          this.listaDoacoes.push(obj);
+        }
+
+      });
+      console.log(this.listaDoacoes);
 
     });
+  }
 
-  });
+  async delete(key: string) {
+    await this.db.object(`listaDoacao/${key}`).remove();
+    this.listaDoacoes = [];
+    this.getAll();
+  }
+
+
+  logout() {
+    this.user.logout();
+    location.reload();
+  }
+
+  async registrar(listaDoacao: any) {
+    this.listaDoacoes = [];
+    const listaDoacoesL = new ListaDoacoes();
+    listaDoacoesL.nomeItem = this.nomeItem;
+    listaDoacoesL.categoria = this.categoria;
+    listaDoacoesL.descricao = this.descricao;
+    listaDoacoesL.telefone = this.telefone;
+    listaDoacoesL.endereco = this.endereco;
+    listaDoacoesL.email = await this.user.getUsername();
+
+    this.db.list('/listaDoacao')
+      .push(listaDoacoesL)
+      .then(r => console.log(r));
+
+    this.nomeItem = '';
+    this.categoria = '';
+    this.descricao = '';
+    this.telefone = '';
+    this.endereco = '';
+    // this.getAll();
+    this.abrirCadastroInsituicao = !this.abrirCadastroInsituicao;
+  }
+
+
+  clearLocalStorage() {
+    // indexedDB[''].deleteDatabase('firebase:authUser:AIzaSyDbGWumh_9tzFwCpfiYmOCVcmlXM5SYjMg');
+  }
+
 }
 
 
-logout() {
-  this.user.logout();
-  location.reload();
-}
-
-async registrar(listaDoacao: any) {
-  this.listaDoacoes = [];
-  const listaDoacoesL = new ListaDoacoes();
-  listaDoacoesL.nomeItem = this.nomeItem;
-  listaDoacoesL.categoria = this.categoria;
-  listaDoacoesL.descricao = this.descricao;
-  listaDoacoesL.telefone = this.telefone;
-  listaDoacoesL.endereco = this.endereco;
-  listaDoacoesL.email = await this.user.getUsername();
-
-  this.db.list('/listaDoacao')
-    .push(listaDoacoesL)
-    .then(r => console.log(r));
-
-  this.nomeItem = '';
-  this.categoria = '';
-  this.descricao = '';
-  this.telefone = '';
-  this.endereco = '';
-  // this.getAll();
-  this.abrirCadastroInsituicao = !this.abrirCadastroInsituicao;
-}
-
-
-clearLocalStorage() {
-  // indexedDB[''].deleteDatabase('firebase:authUser:AIzaSyDbGWumh_9tzFwCpfiYmOCVcmlXM5SYjMg');
-}
-
+class objListaDoacoes {
+  key: string;
+  value: any;
 }
 
 class ListaDoacoes {
@@ -93,3 +109,4 @@ class ListaDoacoes {
   endereco: string;
   email: string;
 }
+

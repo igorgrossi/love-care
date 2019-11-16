@@ -52,19 +52,22 @@
   <ion-content style="height: 300px;">
     <ion-list style="margin-bottom: 2em;" padding *ngFor="let item of listaDoacoes">
       <ion-item>
-        Nome: {{item.nomeItem}}
+        <button (click)="delete(item.key)">Apagar</button>
       </ion-item>
       <ion-item>
-        Categoria: {{item.categoria}}
+        Nome: {{item.value.nomeItem}}
       </ion-item>
       <ion-item>
-        Descrição: {{item.descricao}}
+        Categoria: {{item.value.categoria}}
       </ion-item>
       <ion-item>
-        Telefone: {{item.telefone}}
+        Descrição: {{item.value.descricao}}
       </ion-item>
       <ion-item>
-        Endereço: {{item.endereco}}
+        Telefone: {{item.value.telefone}}
+      </ion-item>
+      <ion-item>
+        Endereço: {{item.value.endereco}}
       </ion-item>
     </ion-list>
   </ion-content>
