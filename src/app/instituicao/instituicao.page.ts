@@ -65,7 +65,7 @@ export class InstituicaoPage implements OnInit {
     location.reload();
   }
 
-  async registrar(listaDoacao: any) {
+  async registrar() {
     this.listaDoacoes = [];
     const listaDoacoesL = new ListaDoacoes();
     listaDoacoesL.nomeItem = this.nomeItem;
